@@ -23,6 +23,7 @@
 #include "VirtualFS.h"
 #include "io/frsky_firmware_update.h"
 #include "hal/adc_driver.h"
+#include "logs.h"
 
 #if defined(LIBOPENUI)
   #include "libopenui.h"
