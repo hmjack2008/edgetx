@@ -24,8 +24,7 @@
 
 #include "definitions.h"
 #include "opentx_types.h"
-#include <string>
-
+#include "strings.h"
 #include <string>
 
 #define SHOW_TIME  0x1
@@ -98,4 +97,11 @@ template<size_t N>
 std::string stringFromNtString(const char (&a)[N]) {
     return std::string(a, strnlen(a, N));        
 }    
+
+// comparison, not case sensitive.
+inline bool compare_nocase(const std::string & first, const std::string & second)
+{
+  return strcasecmp(first.c_str(), second.c_str()) < 0;
+}
+
 #endif  // _STRHELPERS_H_
