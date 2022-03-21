@@ -86,6 +86,7 @@ set(BOOTLOADER_SRC
   init.c
   boot.cpp
   bin_files.cpp
+  ../../../../../VirtualFS.cpp
   )
 
 if(ROTARY_ENCODER)

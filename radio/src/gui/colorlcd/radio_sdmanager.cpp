@@ -273,7 +273,7 @@ void RadioSdManagerPage::build(FormWindow * window)
             // else if (isExtensionMatching(ext, BITMAPS_EXT)) {
             //   // TODO
             // }
-            else if (!strcasecmp(ext, TEXT_EXT) || !strcasecmp(ext, LOGS_EXT)) {
+            else if (!strcasecmp(ext, TEXT_EXT) || !strcasecmp(ext, LOGS_EXT) || !strcasecmp(ext, YAML_EXT)) {
               menu->addLine(STR_VIEW_TEXT, [=]() {
                 VfsFile file;
                 std::string fileName = currentPath + "/" + name;
