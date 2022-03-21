@@ -434,6 +434,8 @@ public:
     return *_instance;
   }
 
+  bool defaultStorageAvailable();
+
   bool format();
   const char * checkAndCreateDirectory(const char * path);
   bool isFileAvailable(const char * path, bool exclDir = false);
@@ -528,8 +530,13 @@ private:
 #if defined(USE_LITTLEFS)
   lfs_config lfsCfg = {0};
   lfs_t lfs = {0};
+  bool lfsMounted = false;
 #elif defined(SPI_FLASH)
   tjftl_t* tjftl;
+  FATFS spiFatFs ={0};
+#endif
+
+#if defined(SDCARD)
 #endif
   std::string curWorkDir = "/";
 
