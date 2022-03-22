@@ -23,7 +23,6 @@
 #include "opentx.h"
 #include "pulses/pxx2.h"
 #include "io/frsky_firmware_update.h"
-#include "libopenui/src/libopenui_file.h"
 #include "VirtualFS.h"
 
 bool isPXX2PowerAvailable(const PXX2HardwareInformation& info, int value)
@@ -568,7 +567,7 @@ const char * Pxx2OtaUpdate::doFlashFirmware(const char * filename, ProgressHandl
   }
 
   uint32_t size;
-  const char * ext = getFileExtension(filename);
+  const char * ext = VirtualFS::getFileExtension(filename);
   if (ext && !strcasecmp(ext, FRSKY_FIRMWARE_EXT)) {
     FrSkyFirmwareInformation * information = (FrSkyFirmwareInformation *) buffer;
     if (file.read(buffer, sizeof(FrSkyFirmwareInformation), count) != VfsError::OK || count != sizeof(FrSkyFirmwareInformation)) {

@@ -20,6 +20,7 @@
  */
 
 #include "opentx.h"
+#include "VirtualFS.h"
 
 uint8_t g_moduleIdx;
 
@@ -162,7 +163,7 @@ void copySelection(char * dst, const char * src, uint8_t size)
 void onModelSetupBitmapMenu(const char * result)
 {
   if (result == STR_UPDATE_LIST) {
-    if (!sdListFiles(BITMAPS_PATH, BITMAPS_EXT, sizeof(g_model.header.bitmap), nullptr)) {
+    if (!VirtualFS::instance().listFiles(BITMAPS_PATH, BITMAPS_EXT, sizeof(g_model.header.bitmap), nullptr)) {
       POPUP_WARNING(STR_NO_BITMAPS_ON_SD);
     }
   }
@@ -474,7 +475,7 @@ void menuModelSetup(event_t event)
           lcdDrawTextAtIndex(MODEL_SETUP_2ND_COLUMN, y, STR_VCSWFUNC, 0, attr);
         if (attr && event==EVT_KEY_BREAK(KEY_ENTER) && READ_ONLY_UNLOCKED()) {
           s_editMode = 0;
-          if (sdListFiles(BITMAPS_PATH, BITMAPS_EXT, sizeof(g_model.header.bitmap), g_model.header.bitmap, LIST_NONE_SD_FILE)) {
+          if (VirtualFS::instance().listFiles(BITMAPS_PATH, BITMAPS_EXT, sizeof(g_model.header.bitmap), g_model.header.bitmap, LIST_NONE_SD_FILE)) {
             POPUP_MENU_START(onModelSetupBitmapMenu);
           }
           else {

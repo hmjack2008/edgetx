@@ -25,6 +25,7 @@
 #include "definitions.h"
 #include "opentx_types.h"
 #include "strings.h"
+#include <string.h>
 #include <string>
 
 #define SHOW_TIME  0x1
