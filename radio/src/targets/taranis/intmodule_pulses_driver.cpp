@@ -19,7 +19,7 @@
  * GNU General Public License for more details.
  */
 
-#include "opentx.h"
+#include "board.h"
 #include "pulses/pulses.h"
 
 void intmoduleStop()

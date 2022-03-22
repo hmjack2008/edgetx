@@ -23,10 +23,10 @@
 #define _BOARD_H_
 
 #include <inttypes.h>
+#include "hal.h"
 #include "definitions.h"
 #include "opentx_constants.h"
 #include "board_common.h"
-#include "hal.h"
 
 #if defined(RADIO_TX12) || defined(RADIO_ZORRO)
   #define  NAVIGATION_X7_TX12
