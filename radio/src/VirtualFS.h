@@ -28,6 +28,7 @@
 #include "littlefs_v2.4.1/lfs.h"
 #else
 #include "tjftl/tjftl.h"
+#include "FatFs/ff.h"
 #endif
 #endif
 #if defined (SDCARD)
@@ -46,7 +47,7 @@ constexpr uint8_t LEN_FILE_EXTENSION_MAX = 5;  // longest used, including the do
 #define INTERNAL_ST_PATH    PATH_SEPARATOR "INTERNAL" PATH_SEPARATOR
 #define MODELS_PATH         ROOT_PATH "MODELS"      // no trailing slash = important
 #define RADIO_PATH          ROOT_PATH "RADIO"       // no trailing slash = important
-#define LOGS_PATH           ROOT_PATH "LOGS"
+#define LOGS_PATH           SDCARD_PATH "LOGS"
 #define SCREENSHOTS_PATH    ROOT_PATH "SCREENSHOTS"
 #define SOUNDS_PATH         ROOT_PATH "SOUNDS/en"
 #define SOUNDS_PATH_LNG_OFS (sizeof(SOUNDS_PATH)-3)
@@ -478,6 +479,9 @@ public:
   VfsError copyFile(const std::string& srcFile, const std::string& srcDir,
              const std::string& destDir, const std::string& destFile);
 #endif
+
+  bool sdCardMounted();
+  size_t sdGetFreeSectors();
 
   uint32_t flashGetNoSectors() const;
   uint32_t flashGetSize() const;

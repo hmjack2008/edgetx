@@ -52,7 +52,9 @@ void preModelLoad()
 {
   watchdogSuspend(500/*5s*/);
 
+#if defined(SDCARD)
   logsClose();
+#endif
 
   if (pulsesStarted()) {
     pausePulses();

@@ -31,7 +31,6 @@
 #include "afhds3.h"
 #include "afhds2.h"
 #include "modules_helpers.h"
-#include "ff.h"
 
 
 #if defined(DSM2)
