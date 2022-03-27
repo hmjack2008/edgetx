@@ -71,6 +71,7 @@ endif()
 set(FIRMWARE_SRC
   ${FIRMWARE_SRC}
   serial.cpp
+  vfs_syscalls.cpp
   syscalls.c
   )
 
