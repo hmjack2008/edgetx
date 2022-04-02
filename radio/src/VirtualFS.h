@@ -239,7 +239,7 @@ public:
     switch(type)
     {
     case VfsFileType::ROOT: return name;
-#if defined (SDCARD) || (!defined(USE_LITTLEFS) && defined(SPI_FLASH))
+#if defined (USE_FATFS)
     case VfsFileType::FAT:  return(!name.empty())?name:fatInfo.fname;
 #endif
 #if defined(USE_LITTLEFS)
@@ -254,7 +254,7 @@ public:
     switch(type)
     {
     case VfsFileType::ROOT: return 0;
-#if defined (SDCARD) || (!defined(USE_LITTLEFS) && defined(SPI_FLASH))
+#if defined (USE_FATFS)
     case VfsFileType::FAT:  return fatInfo.fsize;
 #endif
 #if defined(USE_LITTLEFS)
@@ -270,7 +270,7 @@ public:
     {
     case VfsFileType::ROOT:
       return VfsType::DIR;
-#if defined (SDCARD) || (!defined(USE_LITTLEFS) && defined(SPI_FLASH))
+#if defined (USE_FATFS)
     case VfsFileType::FAT:
       if (!name.empty())
         return VfsType::DIR;
@@ -297,7 +297,7 @@ public:
     {
     case VfsFileType::ROOT:
       return VfsFileAttributes::DIR;
-#if defined (SDCARD) || (!defined(USE_LITTLEFS) && defined(SPI_FLASH))
+#if defined (USE_FATFS)
     case VfsFileType::FAT:
       return (VfsFileAttributes)fatInfo.fattrib;
 #endif
@@ -316,7 +316,7 @@ public:
     {
     case VfsFileType::ROOT:
       return 0;
-#if defined (SDCARD) || (!defined(USE_LITTLEFS) && defined(SPI_FLASH))
+#if defined (USE_FATFS)
     case VfsFileType::FAT:
       return fatInfo.fdate;
 #endif
@@ -333,7 +333,7 @@ public:
     {
     case VfsFileType::ROOT:
       return 0;
-#if defined (SDCARD) || (!defined(USE_LITTLEFS) && defined(SPI_FLASH))
+#if defined (USE_FATFS)
     case VfsFileType::FAT:
       return fatInfo.ftime;
 #endif
